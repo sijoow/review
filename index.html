@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>포토리뷰 EVENT</title>
+    <script  src="https://code.jquery.com/jquery-latest.js"></script>
+    <!-- 부트스트랩 CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+    <!--주소검색-->
+    <script src="https://d1p7wdleee1q2z.cloudfront.net/post/search.js"></script>   
+    <!--웹폰트-->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+</head>
+  
+<style>
+
+        *{margin:0;padding:0;}
+        input[type=checkbox], input[type=radio]{cursor:pointer;}
+        .form-control{vertical-align:middle;}
+        ul{margin:0;padding:0;}
+        ul li{list-style:none;}
+        .container{background:#fff;}
+        body {
+            background-color: white;
+            font-family:'Noto Sans KR',sans-serif;margin:0;padding:0;
+            font-weight:400;line-height:1.7;
+        }
+    
+        .container{max-width:800px;border:1px solid #ced4da;padding:40px;}
+        /*주문서 작성페이지 CSS*/
+        .order-title{text-align:center;font-size:30px;font-weight:500;padding-bottom:30px;}
+    
+       
+        /*개인정보동의*/
+        .individal ul li{margin-left:10px;}
+        .period_info{text-align:center;margin-top:20px;}
+        .period_info input{margin-left:20px;vertical-align: middle;}
+        .individal dt{font-weight:600;}
+        .individal dd{margin-top:10px;font-size:15px;}
+        .period_info{font-weight:600;font-size:16px;}
+        .period_info label{font-weight:600;}
+        .entry_info{padding-top:10px;padding-bottom:10px;font-weight:600;font-size:20px;}
+        footer{border-top:1px solid #111;padding-top:30px;}
+        footer ul li{text-align:center;font-size:14px;width:100%;}
+
+        /*pc 형식에서 의 제품 선택 부분*/
+        .color_select_bar option{text-align:left;}
+        .table-responsive-md option{text-align:left;}
+        .default-option { text-align: center!important;direction: rtl;}
+
+        .photo_review_content ul{margin-top:40px;}
+        .photo_review_content ul li{line-height:1.8;font-size:15px;}
+        .photo_review_content ul li:nth-child(1){font-size:25px;}
+        .photo_review_content ul li:nth-child(2){margin-top:10px;}
+        .photo_review_content ul li:nth-child(3){}
+        .photo_review_content ul li:nth-child(4){}
+
+        
+    .thumbnail-preview {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+#thumbnailPreview{max-width:200px;}
+.sub_tits_info{margin-top:20px;}
+</style>
+
+    
+<body>
+
+<div class="container mt-5"  >
+    <div class="form-row order_title" >
+        <div class="form-group col-md-12 order-title">
+            요기보 포토리뷰 EVENT 신청서
+        </div>
+    </div>
+    <div class="sub_tits">
+        <ul>
+            <li>요기보 제품을 구매 해주셔서 감사합니다 ❤</li>
+            <li>구매하신 쇼핑몰에 포토 리뷰를 남겨주시는 “모든 분들께” 스타벅스 기프티콘을 드립니다.</li>
+        </ul>
+    </div>
+    <div class="photo_review_content">
+        <ul>
+            <li><요기보 포토리뷰 EVENT 안내사항></li>
+            <li> -스타벅스 기프티콘은 매달 초에 일괄 발송됩니다. (포토리뷰 작성일 기준 익월 초)</li>
+            <li> -상품과 관련 없는 내용 또는 성의 없는 리뷰의 경우 이벤트 참여 제외 됩니다.</li>
+            <li>-주문 번호 당 1회 참여 가능합니다.</li>
+            <li>-이벤트 내용은 브랜드 사정에 따라 별도 고지 없이 변동 될 수 있습니다.</li>
+        </ul>
+    </div>
+    <div class="sub_tits_info">※문의 사항 : 요기보 고객센터 02-557-0920</div>
+    <style>
+        .remove{display:none!important}
+    </style>
+    
+     <form action="/upload" method="post" enctype="multipart/form-data" id="imageForm" style="margin:0 auto;" class="mt-5">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="vendor">구매처</label>
+                <select class="form-control" name="store" id="store">
+                    <option>전체</option>
+                    <option value="신세계몰">신세계몰</option>
+                    <option value="CJ온스타일">CJ온스타일</option>
+                    <option value="알렛츠샵">알렛츠샵</option>
+                    <option value="쿠팡">쿠팡</option>
+                    <option value="오늘의집">오늘의집</option>
+                    <option value="롯데아이몰">롯데아이몰</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="vendor">구매제품</label>
+                <input class="form-control"  name="goods" id="goods" > 
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="vendor">주문번호</label>
+                <input class="form-control"  name="orderNumber" id="orderNumber" > 
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12" >
+                <label for="vendor">포토리뷰 캡쳐 이미지 업로드</label>
+                <input type="file" class="form-control" name="image" id="image" accept="image/*" onchange="previewImage()" style="margin-left:-10px;border:none;">
+                <img id="thumbnailPreview" class="thumbnail-preview" src="#" alt="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="vendor">이름</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>   
+                    
+            <div class="form-group col-md-6">
+                <label for="vendor">연락처</label>
+                <input type="text" class="form-control" name="phoneNumber" id="phoneNumber">
+            </div>              
+        </div>
+
+                        
+        <dl class="mt-2">
+            <dt>개인정보 및 마케팅 활용 동의</dt>
+            <dd>
+                <ul class="mt-2"> 
+                    <li style="font-size:13px">사은품 발송을 위해 개인정보(이름,연락처)를 수집하고 있습니다.<br/> 
+                        수집된 정보는사은품 발송 목적으로만 활용되며, 동의하지 않으실 경우 사은품 발송이 불가능 합니다. <br/>
+                         포토 리뷰에 삽입된 이미지는 추 후 마케팅 용도로 활용 될 수 있습니다.
+                     </li>
+                    <div class="period_info">개인정보 및 마케팅 활용에 동의하십니까? <input type="checkbox" name="individal_3_ck"> <label>동의함</label></div>
+                </ul>
+            </dd>
+        </dl>   
+
+        <button type="submit" id="result_confirm" class="btn btn-outline-info col-md-12 mt-4 entry_info" type="button">신청서 작성완료</button>
+    </form>
+
+
+</div>
+<br/></br/><br/>
+<!-- 부트스트랩 JS 및 Popper.js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script>
+    document.getElementById('phoneNumber').addEventListener('input', function() {
+        var number = this.value.replace(/[^0-9]/g, '');  // 숫자만 추출
+        var phone = '';
+        if (number.length < 4) {
+            return number;
+        } else if (number.length < 7) {
+            phone += number.substr(0, 3);
+            phone += '-';
+            phone += number.substr(3);
+        } else if (number.length < 11) {
+            phone += number.substr(0, 3);
+            phone += '-';
+            phone += number.substr(3, 3);
+            phone += '-';
+            phone += number.substr(6);
+        } else {
+            phone += number.substr(0, 3);
+            phone += '-';
+            phone += number.substr(3, 4);
+            phone += '-';
+            phone += number.substr(7, 4);
+        }
+        this.value = phone;
+    });
+
+
+// 각 입력 필드에서 값이 변경될 때마다 값을 가져와 콘솔에 출력
+    document.getElementById('store').addEventListener('change', function() {
+        var selectedStore = this.value;
+    });
+
+    document.getElementById('goods').addEventListener('input', function() {
+        var enteredGoods = this.value;
+    });
+
+    document.getElementById('orderNumber').addEventListener('input', function() {
+        var enteredOrderNumber = this.value;
+    });
+
+    document.getElementById('name').addEventListener('input', function() {
+        var enteredName = this.value;
+    });
+
+    document.getElementById('phoneNumber').addEventListener('input', function() {
+        var enteredPhoneNumber = this.value;
+    });
+</script>
+<script>
+ document.getElementById("imageForm").addEventListener("submit", function (e) {
+    const individual3Ck = document.getElementsByName("individal_3_ck")[0].checked;
+    let formIsValid = true;
+   
+    if (!individual3Ck) {
+        alert("개인정보 및 마케팅 활용에 동의하셔야 포토 리뷰 신청서 제출이 가능합니다.");
+        e.preventDefault();
+        formIsValid = false;
+    } else {
+        const userResponse = confirm('포토리뷰 신청서 제출하시겠습니까?');
+        if (!userResponse) {
+            e.preventDefault();
+        }
+    }
+});
+
+
+    function previewImage() {
+        var preview = document.getElementById('thumbnailPreview');
+        var fileInput = document.getElementById('image');
+        var file = fileInput.files[0];
+
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "#";
+        }
+    }
+</script>
+</body>
+</html>
